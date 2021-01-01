@@ -8,9 +8,12 @@ const Todo: React.FC = () => {
   };
   const handleFormSubmit = (event: FormEvent<HTMLFormElement>): void => {
     event.preventDefault();
-    setTasks([...tasks, task]);
-    setTask('');
+    if (task.trim()) {
+      setTasks([...tasks, task]);
+      setTask('');
+    }
   };
+
   return (
     <>
       <form onSubmit={handleFormSubmit}>
@@ -25,7 +28,11 @@ const Todo: React.FC = () => {
       <table>
         <thead>
           <tr>
-            <th>Task</th>
+            {tasks.map(item => (
+              <tr>
+                <td>{item}</td>
+              </tr>
+            ))}
           </tr>
         </thead>
       </table>
