@@ -16,7 +16,7 @@ const Todo: React.FC = () => {
 
   return (
     <>
-      <form onSubmit={handleFormSubmit}>
+      <form onSubmit={handleFormSubmit} data-testid="table">
         <input
           onChange={handleInputChang}
           placeholder="Type a new task here"
@@ -27,13 +27,11 @@ const Todo: React.FC = () => {
       </form>
       <table>
         <thead>
-          <tr>
-            {tasks.map(item => (
-              <tr>
-                <td>{item}</td>
-              </tr>
-            ))}
-          </tr>
+          {tasks.map((item, index) => (
+            <tr key={index}>
+              <td>{item}</td>
+            </tr>
+          ))}
         </thead>
       </table>
     </>
